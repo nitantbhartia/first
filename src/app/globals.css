@@ -1,0 +1,167 @@
+@import "tailwindcss";
+
+@theme {
+  --color-navy-50: #f0f4f8;
+  --color-navy-100: #d9e2ec;
+  --color-navy-200: #bcccdc;
+  --color-navy-300: #9fb3c8;
+  --color-navy-400: #829ab1;
+  --color-navy-500: #627d98;
+  --color-navy-600: #486581;
+  --color-navy-700: #334e68;
+  --color-navy-800: #243b53;
+  --color-navy-900: #102a43;
+  --color-navy-950: #0a1929;
+
+  --color-amber-50: #fffbea;
+  --color-amber-100: #fff3c4;
+  --color-amber-200: #fce588;
+  --color-amber-300: #fadb5f;
+  --color-amber-400: #f7c948;
+  --color-amber-500: #f0b429;
+  --color-amber-600: #de911d;
+  --color-amber-700: #cb6e17;
+  --color-amber-800: #b44d12;
+  --color-amber-900: #8d2b0b;
+
+  --color-coral-50: #fff0ed;
+  --color-coral-100: #ffe0d9;
+  --color-coral-200: #ffc4b8;
+  --color-coral-300: #ff9e8c;
+  --color-coral-400: #ff7a5c;
+  --color-coral-500: #f05d3e;
+  --color-coral-600: #d44425;
+  --color-coral-700: #b83218;
+  --color-coral-800: #9a2412;
+  --color-coral-900: #7d1a0b;
+
+  --color-sage-50: #f0faf4;
+  --color-sage-100: #d1f0dc;
+  --color-sage-200: #a3e0ba;
+  --color-sage-300: #6fcc95;
+  --color-sage-400: #44b872;
+  --color-sage-500: #2da05c;
+  --color-sage-600: #228848;
+  --color-sage-700: #1a6e3a;
+  --color-sage-800: #14562e;
+  --color-sage-900: #0e3f22;
+
+  --font-display: Georgia, 'Times New Roman', serif;
+  --font-body: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    font-family: var(--font-body);
+    color: var(--color-navy-900);
+    background-color: #fafbfc;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+  }
+
+  ::selection {
+    background-color: var(--color-amber-200);
+    color: var(--color-navy-900);
+  }
+}
+
+@layer components {
+  .gradient-text {
+    background: linear-gradient(135deg, var(--color-amber-500), var(--color-coral-500));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .glass-card {
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+  }
+
+  .assessment-card {
+    background: white;
+    border-radius: 1rem;
+    box-shadow: 0 1px 3px rgba(16, 42, 67, 0.08), 0 4px 12px rgba(16, 42, 67, 0.04);
+    transition: all 0.2s ease;
+  }
+
+  .assessment-card:hover {
+    box-shadow: 0 2px 8px rgba(16, 42, 67, 0.12), 0 8px 24px rgba(16, 42, 67, 0.08);
+  }
+
+  .likert-chip {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.75rem 1.25rem;
+    border-radius: 0.75rem;
+    border: 2px solid var(--color-navy-200);
+    background: white;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    font-weight: 500;
+    min-width: 3rem;
+    user-select: none;
+  }
+
+  .likert-chip:hover {
+    border-color: var(--color-amber-400);
+    background: var(--color-amber-50);
+  }
+
+  .likert-chip.selected {
+    border-color: var(--color-amber-500);
+    background: var(--color-amber-500);
+    color: white;
+    box-shadow: 0 2px 8px rgba(240, 180, 41, 0.3);
+  }
+
+  .progress-bar {
+    height: 4px;
+    background: var(--color-navy-100);
+    border-radius: 2px;
+    overflow: hidden;
+  }
+
+  .progress-bar-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--color-amber-500), var(--color-coral-500));
+    border-radius: 2px;
+    transition: width 0.5s ease;
+  }
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-navy-50);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-navy-300);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-navy-400);
+}
+
+@keyframes pulse-crisis {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.85; }
+}
+
+.crisis-banner {
+  animation: pulse-crisis 2s ease-in-out infinite;
+}
