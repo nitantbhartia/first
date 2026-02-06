@@ -620,7 +620,7 @@ function DersChart({ ders }: { ders: DersSubscales }) {
 export default function ResultsPage() {
   const {
     answers,
-    scores: storeScores,
+    scores: _storeScores,
     reportTier,
     reportContent,
     reportGenerated,

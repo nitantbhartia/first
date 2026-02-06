@@ -637,7 +637,6 @@ export default function AssessPage() {
       setGlobalIndex(prevIndex);
       if (phase !== 'question') setPhase('question');
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [globalIndex, currentEntry, phase]);
 
   const jumpToSection = useCallback(
@@ -655,7 +654,6 @@ export default function AssessPage() {
   const skipQuestion = useCallback(() => {
     if (autoAdvanceRef.current) clearTimeout(autoAdvanceRef.current);
     goToNext();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [goToNext]);
 
   // -- Keyboard navigation --
@@ -702,7 +700,6 @@ export default function AssessPage() {
 
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [phase, globalIndex, currentAnswer, handleAnswer, goToNext, goToPrevious, skipQuestion]);
 
   // -- Start assessment --

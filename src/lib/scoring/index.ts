@@ -771,7 +771,7 @@ interface PVQDimension {
 }
 
 const PVQ_PREFIX = 'pvq';
-const PVQ_ITEM_COUNT = 21;
+const _PVQ_ITEM_COUNT = 21;
 const PVQ_SCALE_MAX = 6;
 
 const PVQ_DIMENSIONS: PVQDimension[] = [

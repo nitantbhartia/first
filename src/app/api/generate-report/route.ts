@@ -33,12 +33,12 @@ FORMAT: Write in clear, engaging prose. Use headers for sections. Include specif
 
 function buildReportPrompt(scores: Record<string, ScoreData>, section: string, ageRange?: string, gender?: string): string {
   const scoresSummary = Object.entries(scores)
-    .map(([key, score]) => {
+    .map(([, score]) => {
       let detail = `${score.instrument}: Raw Score ${score.rawScore}/${score.maxScore}, Severity: ${score.severity}`;
       if (score.percentile) detail += `, Percentile: ${score.percentile}th`;
       if (score.facets) {
         detail += '\n  Facets: ' + Object.entries(score.facets)
-          .map(([facetName, facet]) => `${facet.label}: ${facet.score}/${facet.maxScore}`)
+          .map(([, facet]) => `${facet.label}: ${facet.score}/${facet.maxScore}`)
           .join(', ');
       }
       return detail;

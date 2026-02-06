@@ -9,7 +9,7 @@ export interface ScoreData {
 }
 
 export function generateAIPrompt(scores: Record<string, ScoreData>, ageRange?: string, gender?: string): string {
-  const scoreLines = Object.entries(scores).map(([key, score]) => {
+  const scoreLines = Object.entries(scores).map(([, score]) => {
     let line = `- ${score.instrument}: ${score.rawScore}/${score.maxScore} (${score.severity})`;
     if (score.percentile) line += ` — ${score.percentile}th percentile`;
     if (score.facets) {
@@ -58,7 +58,7 @@ The individual may now ask you questions. Respond thoughtfully using their profi
 export function generateClinicalExport(scores: Record<string, ScoreData>): string {
   const now = new Date().toISOString().split('T')[0];
 
-  const instrumentRows = Object.entries(scores).map(([key, score]) => {
+  const instrumentRows = Object.entries(scores).map(([, score]) => {
     return `| ${score.instrument} | ${score.rawScore} | ${score.maxScore} | ${score.severity} | ${score.percentile ? score.percentile + 'th' : 'N/A'} |`;
   }).join('\n');
 
@@ -80,7 +80,7 @@ ${instrumentRows}
 
 INSTRUMENT DETAILS
 
-${Object.entries(scores).map(([key, score]) => {
+${Object.entries(scores).map(([, score]) => {
   let detail = `## ${score.instrument}
 Score: ${score.rawScore}/${score.maxScore}
 Classification: ${score.severity}
@@ -88,7 +88,7 @@ ${score.interpretation}`;
 
   if (score.facets) {
     detail += '\n\nFacet Scores:';
-    Object.entries(score.facets).forEach(([facetKey, facet]) => {
+    Object.entries(score.facets).forEach(([, facet]) => {
       detail += `\n  ${facet.label}: ${facet.score}/${facet.maxScore}`;
     });
   }
